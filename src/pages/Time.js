@@ -1,3 +1,9 @@
-export default function Time() {
-  return <div>Time</div>;
+export default function Time(props) {
+  return (
+    <div>
+      {props.trashTimes.map((trashTime, index) => (
+        <p key={index}>{trashTime.fields.time}</p>
+      ))}
+    </div>
+  );
 }

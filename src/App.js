@@ -28,6 +28,7 @@ function App() {
       .select({ view: "Grid view" })
       .eachPage((records, fetchNextPage) => {
         setTrashTime(records);
+        setTrashTime(records);
         console.log(records);
         fetchNextPage();
       });
@@ -35,14 +36,16 @@ function App() {
 
   return (
     <div>
-      <h1 className="bg-black text-white">Hello World!!!</h1>
       <NavBar />
       <Routes>
         <Route path="/" element={<TotalTrash />} />
-        <Route path="/time" element={<Time />} />
+        <Route
+          path="/time"
+          element={<Time key={trashTimes.id} trashTimes={trashTimes} />}
+        />
         <Route
           path="/data-for-each-user"
-          element={<DataForEachUser key={users.id} />}
+          element={<DataForEachUser key={users.id} users={users} />}
         />
         <Route path="/bin-capacity" element={<BinCapacity />} />
       </Routes>
