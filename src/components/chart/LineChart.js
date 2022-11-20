@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
 function LineChart(props) {
-  const dataTime = [];
+  const info = props.dataLabel;
 
   return (
     <div>
@@ -25,10 +25,11 @@ function LineChart(props) {
           datasets: [
             {
               label: "Total Trash collected during the Day",
-              data: [12, 19, 3, 5, 2, 3],
+              data: info,
               backgroundColor: "orange",
               borderColor: "red",
               borderWidth: 1,
+              fill: true,
             },
             // {
             //   label: 'Quantity',
@@ -42,6 +43,11 @@ function LineChart(props) {
         width={600}
         options={{
           maintainAspectRatio: false,
+          elements: {
+            line: {
+              tension: 0.5,
+            },
+          },
           scales: {
             yAxes: [
               {
