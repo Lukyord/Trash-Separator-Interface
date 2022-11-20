@@ -3,9 +3,9 @@ import "react-circular-progressbar/dist/styles.css";
 
 import ProgressProvider from "../components/ui/ProgressProvider";
 
-export default function BinCapacity() {
-  const percentageCan = 36;
-  const percentageBottle = 36;
+export default function BinCapacity(props) {
+  const percentageCan = props.percentages[0].fields.Notes * 100;
+  const percentageBottle = props.percentages[1].fields.Notes * 100;
   const rgbCan = [68, 214, 44];
   const rgbBottle = [68, 214, 44];
   if ((percentageCan > 40) & (percentageCan < 70)) {
@@ -67,7 +67,7 @@ export default function BinCapacity() {
               />
             )}
           </ProgressProvider>
-          {percentageCan > 70 ? (
+          {percentageCan > 50 ? (
             <p className="text-2xl">
               Please change trash bin, only
               <text className="text-red-600"> {100 - percentageCan}%</text>{" "}
@@ -118,7 +118,7 @@ export default function BinCapacity() {
               />
             )}
           </ProgressProvider>
-          {percentageBottle > 70 ? (
+          {percentageBottle > 50 ? (
             <p className="text-2xl">
               Please change trash bin, only
               <text className="text-red-600">

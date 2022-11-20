@@ -15,6 +15,7 @@ function App() {
 
   const [users, setUser] = useState([]);
   const [trashTimes, setTrashTime] = useState([]);
+  const [trashPercentages, setTrashPercentage] = useState([]);
 
   useEffect(() => {
     base("database-id")
@@ -28,7 +29,13 @@ function App() {
       .select({ view: "Grid view" })
       .eachPage((records, fetchNextPage) => {
         setTrashTime(records);
-        setTrashTime(records);
+        console.log(records);
+        fetchNextPage();
+      });
+    base("trash-percentage")
+      .select({ view: "Grid view" })
+      .eachPage((records, fetchNextPage) => {
+        setTrashPercentage(records);
         console.log(records);
         fetchNextPage();
       });
@@ -47,7 +54,21 @@ function App() {
           path="/data-for-each-user"
           element={<DataForEachUser key={users.id} users={users} />}
         />
-        <Route path="/bin-capacity" element={<BinCapacity />} />
+        <Route
+          path="/bin-capacity"
+          element={
+            <BinCapacity
+              key={trashPercentages.id}
+              // can={trashPercentages.filter(
+              //   (percent) => percent.fields.Name[0] === "can trash"
+              // )}
+              // bottle={trashPercentages.filter(
+              //   (percent) => percent.fields.Name[0] === "bottle trash"
+              // )}
+              percentages={trashPercentages}
+            />
+          }
+        />
       </Routes>
     </div>
   );
