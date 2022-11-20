@@ -6,8 +6,9 @@ import {
   BellIcon,
   ServerIcon,
 } from "@heroicons/react/solid";
+import Trash from "../components/ui/Trash";
 
-export default function TotalTrash() {
+export default function TotalTrash(props) {
   return (
     <div
       name="home"
@@ -27,7 +28,7 @@ export default function TotalTrash() {
           </Link>
         </div>
         <div>
-          <h1 className="py-3 text-5xl md:text-[20rem] font-bold">10</h1>
+          <Trash users={props.users} />
         </div>
         <div
           className="absolute flex flex-col py-8 md:min-w-[760px] bottom-[5%]

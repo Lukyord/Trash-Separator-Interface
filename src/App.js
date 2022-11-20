@@ -38,7 +38,7 @@ function App() {
     <div>
       <NavBar />
       <Routes>
-        <Route path="/" element={<TotalTrash />} />
+        <Route path="/" element={<TotalTrash key={users.id} users={users} />} />
         <Route
           path="/time"
           element={<Time key={trashTimes.id} trashTimes={trashTimes} />}
